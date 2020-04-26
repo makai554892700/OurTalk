@@ -1,0 +1,44 @@
+buildscript {
+    ext {
+        fastjsonVersion = '1.2.18'
+        shiroVersion = '1.4.0'
+        springRedisVersion = '1.4.7.RELEASE'
+        commonsLang3Version = '3.7'
+        commonsIoVersion = '2.6'
+    }
+}
+plugins {
+    id 'org.springframework.boot' version '2.2.2.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+    id 'java'
+}
+
+group = 'www.mys.com'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation(
+            'org.springframework.boot:spring-boot-starter',
+            'org.springframework.boot:spring-boot-starter-tomcat',
+            'org.springframework.boot:spring-boot-starter-web', //web基本jar
+            'mysql:mysql-connector-java', //mysql连接驱动
+            'org.springframework.boot:spring-boot-starter-data-jpa', //数据库操作
+            'org.springframework.boot:spring-boot-configuration-processor', //配置文件注入
+            'org.springframework.boot:spring-boot-starter-aop', //切面编程支持
+            "com.alibaba:fastjson:${fastjsonVersion}", //fastjson，json快速简单处理
+            //redis相关jar包 start
+            'org.springframework.boot:spring-boot-starter-data-redis',
+            //redis相关jar包 end
+            //shiro相关jar包 start
+            "org.apache.shiro:shiro-core:${shiroVersion}",
+            "org.apache.shiro:shiro-web:${shiroVersion}",
+            "org.apache.shiro:shiro-spring:${shiroVersion}",
+            //shiro相关jar包 end
+            "io.netty:netty-all:4.1.48.Final",
+    )
+}
